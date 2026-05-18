@@ -1,0 +1,32 @@
+[
+    {
+		"key": "alt+v",
+		"command": "toggleVim"
+    },
+    {
+        "key": "alt+b",
+        "command": "bookmarks.toggle",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+j",
+        "command": "bookmarks.jumpToNext",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+k",
+        "command": "bookmarks.jumpToPrevious",
+        "when": "editorTextFocus"
+    },
+  // FILE TREE
+  {
+    "command": "workbench.action.toggleSidebarVisibility",
+    "key": "ctrl+e"
+  },
+  {
+    "command": "workbench.files.action.focusFilesExplorer",
+    "key": "ctrl+e",
+    "when": "editorTextFocus"
+  },
+  //
+]

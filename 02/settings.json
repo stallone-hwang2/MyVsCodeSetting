@@ -1,0 +1,71 @@
+{
+  "chat.disableAIFeatures": true, 
+  "git.openRepositoryInParentFolders": "never",
+  "editor.minimap.enabled": false,
+    "vim.leader": "<space>",
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.ignorecase": true,
+    "vim.smartcase": true,
+    "vim.useSystemClipboard": true,
+    "vim.sneak": true,
+    "vim.surround": true,
+    "vim.replaceWithRegister": true,
+    "vim.camelCaseMotion.enable": true,
+    "vim.argumentObjectSeparators": [",", ";"],
+    "vim.argumentObjectOpeningDelimiters": ["(", "["],
+    "vim.argumentObjectClosingDelimiters": [")", "]"],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [">"],
+            "after": [">", "g", "v"]
+        },
+        {
+            "before": ["<"],
+            "after": ["<", "g", "v"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+          "before": ["<leader>", "%"],
+          "commands": [
+            {
+              // 移動到相對 html tag
+              "command": "editor.emmet.action.matchTag",
+            },
+          ],
+        },        
+        {
+            "before": ["<C-n>"],
+            "commands": [":nohl"]
+        },
+        {
+            "before": ["u"],
+            "after": ["u"]
+        },
+        {
+            "before": ["<C-r>"],
+            "after": ["<C-r>"]
+        }
+    ],
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-w>": false,
+        "<C-c>": false,
+        "<C-v>": false,
+        "<C-x>": false,
+        "<C-z>": false,
+        "<C-y>": false,
+        "<C-b>": false, 
+        "<C-h>": false,
+        "<C-j>": false,
+        "<C-k>": false,
+        "<C-l>": false        
+    },
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    }
+}
