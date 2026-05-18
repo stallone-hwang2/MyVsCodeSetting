@@ -1,0 +1,152 @@
+{
+  "chat.disableAIFeatures": true, 
+  "git.openRepositoryInParentFolders": "never",
+  "editor.minimap.enabled": false,
+    "vim.leader": "<space>",
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.ignorecase": true,
+    "vim.smartcase": true,
+    "vim.useSystemClipboard": true,
+    "vim.sneak": true,
+    "vim.surround": true,
+    "vim.replaceWithRegister": true,
+    "vim.camelCaseMotion.enable": true,
+    "vim.argumentObjectSeparators": [",", ";"],
+    "vim.argumentObjectOpeningDelimiters": ["(", "["],
+    "vim.argumentObjectClosingDelimiters": [")", "]"],
+   "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        },
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        },
+        {
+            "before": ["<C-s>"],
+            "commands": [":w"]
+        },
+        {
+            "before": ["<A-j>"],
+            "commands": ["editor.action.moveLinesDownAction"]
+        },
+        {
+            "before": ["<A-k>"],
+            "commands": ["editor.action.moveLinesUpAction"]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<tab>"],
+            "commands": ["workbench.action.nextEditor"]
+        },
+        {
+            "before": ["<S-tab>"],
+            "commands": ["workbench.action.previousEditor"]
+        },
+        {
+            "before": ["g", "d"],
+            "commands": ["editor.action.revealDefinition"]
+        },
+        {
+            "before": ["g", "r"],
+            "commands": ["editor.action.goToReferences"]
+        },
+        {
+            "before": ["g", "i"],
+            "commands": ["editor.action.goToImplementation"]
+        },
+        {
+            "before": ["K"],
+            "commands": ["editor.action.showHover"]
+        },
+        {
+            "before": ["[", "d"],
+            "commands": ["editor.action.marker.prev"]
+        },
+        {
+            "before": ["]", "d"],
+            "commands": ["editor.action.marker.next"]
+        },
+        {
+            "before": ["g", "h"],
+            "after": ["^"]
+        },
+        {
+            "before": ["g", "l"],
+            "after": ["$"]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [">"],
+            "after": [">", "g", "v"]
+        },
+        {
+            "before": ["<"],
+            "after": ["<", "g", "v"]
+        },
+        {
+            "before": ["g", "c", "c"],
+            "commands": ["editor.action.commentLine", "extension.vim_escape"]
+        },
+        {
+            "before": ["g", "c"],
+            "commands": ["editor.action.commentLine"]
+        },
+        {
+            "before": ["g", "h"],
+            "after": ["^"]
+        },
+        {
+            "before": ["g", "l"],
+            "after": ["$"]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+          "before": ["<leader>", "%"],
+          "commands": [
+            {
+              // 移動到相對 html tag
+              "command": "editor.emmet.action.matchTag",
+            },
+          ],
+        },        
+        {
+            "before": ["<C-n>"],
+            "commands": [":nohl"]
+        },
+        {
+            "before": ["u"],
+            "after": ["u"]
+        },
+        {
+            "before": ["<C-r>"],
+            "after": ["<C-r>"]
+        }
+    ],
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-w>": false,
+        "<C-c>": false,
+        "<C-v>": false,
+        "<C-x>": false,
+        "<C-z>": false,
+        "<C-y>": false,
+        "<C-b>": false, 
+        "<C-h>": false,
+        "<C-j>": false,
+        "<C-k>": false,
+        "<C-l>": false        
+    },
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+  "workbench.colorTheme": "Monokai Dimmed",
+}
