@@ -63,7 +63,8 @@
         "<C-h>": false,
         "<C-j>": false,
         "<C-k>": false,
-        "<C-l>": false        
+        "<C-l>": false, 
+        "<C-g>": false, 
     },
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1

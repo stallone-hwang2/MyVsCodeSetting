@@ -28,5 +28,15 @@
     "key": "ctrl+e",
     "when": "editorTextFocus"
   },
-  //
+  //Ctrl+上/下鍵, Screen Scroll（視窗滾動）
+  {
+    "key": "ctrl+up",
+    "command": "scrollLineUp",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+down",
+    "command": "scrollLineDown",
+    "when": "editorTextFocus"
+  },  
 ]
