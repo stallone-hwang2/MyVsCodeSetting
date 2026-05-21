@@ -21,11 +21,11 @@
   // FILE TREE
   {
     "command": "workbench.action.toggleSidebarVisibility",
-    "key": "ctrl+e"
+    "key": "ctrl+alt+l"
   },
   {
     "command": "workbench.files.action.focusFilesExplorer",
-    "key": "ctrl+e",
+    "key": "ctrl+alt+l",
     "when": "editorTextFocus"
   },
   //Ctrl+上/下鍵, Screen Scroll（視窗滾動）
