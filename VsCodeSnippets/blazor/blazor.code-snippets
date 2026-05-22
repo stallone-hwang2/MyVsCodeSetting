@@ -13,7 +13,7 @@
         "scope": "aspnetcorerazor,html",
         "prefix": "bl-component-tag-helper-param",
         "body": [
-            "<component type=\"typeof(${1:MyComponent})\" render-mode=\"${2|ServerPrerendered,Server,Static|}\ param-${3:MyParameter}=\"${4:Value}\" />"
+            "<component type=\"typeof(${1:MyComponent})\" render-mode=\"${2|ServerPrerendered,Server,Static|}\" param-${3:MyParameter}=\"${4:Value}\" />"
         ]
     },
     "Code Block": {
