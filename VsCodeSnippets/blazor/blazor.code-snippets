@@ -1,0 +1,807 @@
+{
+    // ==========================================
+    // 1. Razor / Blazor 結構與指令片段 (以第一組為主，補齊其餘)
+    // ==========================================
+    "Component Tag Helper": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-component-tag-helper",
+        "body": [
+            "<component type=\"typeof(${1:MyComponent})\" render-mode=\"${2|ServerPrerendered,Server,Static|}\" />"
+        ]
+    },
+    "Component Tag Helper with Parameter": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-component-tag-helper-param",
+        "body": [
+            "<component type=\"typeof(${1:MyComponent})\" render-mode=\"${2|ServerPrerendered,Server,Static|}\ param-${3:MyParameter}=\"${4:Value}\" />"
+        ]
+    },
+    "Code Block": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-code",
+        "description": "Create a code block.",
+        "body": [
+            "@code {",
+            "\t$1",
+            "}"
+        ]
+    },
+    "Functions Block": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-func",
+        "description": "Create a functions block.",
+        "body": [
+            "@functions {",
+            "    $1",
+            "}"
+        ]
+    },
+    "@page Directive": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-page",
+        "body": [
+            "@page \"/${1:${TM_FILENAME_BASE}}\""
+        ]
+    },
+    "@page Directive with Parameter": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-page-param",
+        "body": [
+            "@page \"/${1:${TM_FILENAME_BASE}}/{${2:Id}:${3|int,bool,datetime,decimal,double,float,guid,long|}}\""
+        ]
+    },
+    "@inject Directive": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-inject",
+        "body": [
+            "@inject ${1:Type} ${2:Name}"
+        ]
+    },
+    "@inject IJSRuntime Directive": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-inject-JS",
+        "body": [
+            "@inject IJSRuntime JSRuntime"
+        ]
+    },
+    "@inject HttpClient Directive": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-inject-http",
+        "body": [
+            "@inject HttpClient Http"
+        ]
+    },
+    "@inject IConfiguration Directive": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-inject-config",
+        "description": "Create an @inject directive with IConfiguration.",
+        "body": [
+            "@inject IConfiguration Configuration"
+        ]
+    },
+    "@using Directive": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-using",
+        "body": [
+            "@using ${1:Namespace}"
+        ]
+    },
+    "@implements Directive": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-implements",
+        "body": [
+            "@implements ${1:IDisposable}"
+        ]
+    },
+    "@typeparam Directive": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-typeparam",
+        "body": [
+            "@typeparam ${1:T}"
+        ]
+    },
+    "@layout Directive": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-layout",
+        "body": [
+            "@layout ${1:Layout}"
+        ]
+    },
+    "@inherits Directive": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-inherits",
+        "description": "Create an @inherits directive.",
+        "body": [
+            "@inherits $1"
+        ]
+    },
+    "@inherits OwningComponentBase Directive": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-owningComponentBase",
+        "body": [
+            "@inherits OwningComponentBase${1:<ApplicationDbContext>}"
+        ]
+    },
+    "@attribute [Authorize] Directive": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-authorize",
+        "body": [
+            "@attribute [Authorize]"
+        ]
+    },
+    "@attributes Attribute": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-attributes",
+        "body": [
+            "@attributes=\"${1:Attributes}\""
+        ]
+    },
+    "@bind Attribute": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-bind",
+        "body": [
+            "@bind=\"${1:Property}\""
+        ]
+    },
+    "@bind-Value Attribute": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-bind-value",
+        "body": [
+            "@bind-${1:Value}=\"${2:Property}\""
+        ]
+    },
+    "@bind-value:event Attribute": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-bind-event",
+        "body": [
+            "@bind-${1:value}:event=\"${2:oninput}\""
+        ]
+    },
+    "@bind:format Attribute": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-bind-format",
+        "body": [
+            "@bind:format=\"${1:yyyy-MM-dd}\""
+        ]
+    },
+    "@event:preventDefault Attribute": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-preventDefault",
+        "body": [
+            "@${1:onkeypress}:preventDefault"
+        ]
+    },
+    "@ref Attribute": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-ref",
+        "body": [
+            "@ref=\"${1:Property}\""
+        ]
+    },
+
+    // ==========================================
+    // 2. 邏輯控制與迴圈片段 (新增 bl- 命名)
+    // ==========================================
+    "Razor foreach loop": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-foreach",
+        "description": "Create a foreach loop.",
+        "body": [
+            "@foreach (var ${1:item} in ${2:items})",
+            "{",
+            "    $3",
+            "}"
+        ]
+    },
+    "Razor for loop": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-for",
+        "description": "Create a for loop.",
+        "body": [
+            "@for (int ${1:index} = 0; index < ${2:length}; index++)",
+            "{",
+            "    $3",
+            "}"
+        ]
+    },
+    "Razor @if statement": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-if",
+        "description": "Create a @if statement.",
+        "body": [
+            "@if (${1:true})",
+            "{",
+            "    $2",
+            "}"
+        ]
+    },
+    "Razor @if else statement": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-ifelse",
+        "description": "Create a @if and else statement.",
+        "body": [
+            "@if (${1:true})",
+            "{",
+            "    $2",
+            "}",
+            "else",
+            "{",
+            "    $3",
+            "}"
+        ]
+    },
+
+    // ==========================================
+    // 3. Blazor 內建/自訂組件模板 (以第一組與 components.json 融合)
+    // ==========================================
+    "Blank Blazor Component": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-component",
+        "description": "Create a blank Blazor component.",
+        "body": [
+            "@page \"/${1:${TM_FILENAME_BASE}}\"",
+            "",
+            "<div></div>",
+            "",
+            "@code {",
+            "    $0",
+            "}"
+        ]
+    },
+    "Layout Component": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-component-layout",
+        "body": [
+            "@inherits LayoutComponentBase",
+            "$0",
+            "@Body",
+            "",
+            "@code {",
+            "",
+            "}"
+        ]
+    },
+    "Disposable Component": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-component-disposable",
+        "body": [
+            "@implements IDisposable",
+            "",
+            "@code {",
+            "\tpublic void Dispose()",
+            "\t{",
+            "\t\t$0",
+            "\t}",
+            "}"
+        ]
+    },
+    "Component with HTTP call": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-component-http",
+        "description": "Create a Blazor component with an HTTP call",
+        "body": [
+            "@inject HttpClient Http",
+            "",
+            "<h1>@${3:name}</h1>",
+            "",
+            "@code {",
+            "\t${1:private} ${2:string} ${3:name};",
+            "",
+            "\tprotected override async Task OnInitializedAsync()",
+            "\t{",
+            "\t\t${3:name} = await Http.GetFromJsonAsync<${2:string}>(\"api/${4:url}\");",
+            "\t}",
+            "}"
+        ]
+    },
+    "Component receiving notifications": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-component-notify",
+        "body": [
+            "@inject ${1:NotifierService} ${2:Notifier}",
+            "@implements IDisposable",
+            "",
+            "@code {",
+            "\tprotected override void OnInitialized()",
+            "\t{",
+            "\t\t$2.${3:Notify} += $4;",
+            "\t}",
+            "",
+            "\t${5:public} async Task ${4:OnNotify}(${6:string key, int value})",
+            "\t{",
+            "\t\tawait InvokeAsync(() =>",
+            "\t\t{",
+            "\t\t\t$0",
+            "\t\t\tStateHasChanged();",
+            "\t\t});",
+            "\t}",
+            "",
+            "\tpublic void Dispose()",
+            "\t{",
+            "\t\t$2.$3 -= $4;",
+            "\t}",
+            "}"
+        ]
+    },
+    "Component with Child Content": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-component-child",
+        "body": [
+            "@ChildContent",
+            "",
+            "@code {",
+            "\t[Parameter]",
+            "\tpublic RenderFragment ChildContent { get; set; }",
+            "}"
+        ]
+    },
+    "Templated Component": {
+        "scope": "aspnetcorerazor",
+        "prefix": "bl-component-templated",
+        "body": [
+            "@typeparam TItem",
+            "",
+            "<table>",
+            "\t<thead>",
+            "\t\t<tr>@TableHeader</tr>",
+            "\t</thead>",
+            "\t<tbody>",
+            "\t\t@foreach (var item in Items)",
+            "\t\t{",
+            "\t\t\t<tr>@RowTemplate(item)</tr>",
+            "\t\t}",
+            "\t</tbody>",
+            "\t<tfoot>",
+            "\t\t<tr>@TableFooter</tr>",
+            "\t</tfoot>",
+            "</table>",
+            "",
+            "@code {",
+            "\t[Parameter]",
+            "\tpublic RenderFragment TableHeader { get; set; }",
+            "",
+            "\t[Parameter]",
+            "\tpublic RenderFragment<TItem> RowTemplate { get; set; }",
+            "",
+            "\t[Parameter]",
+            "\tpublic RenderFragment TableFooter { get; set; }",
+            "",
+            "\t[Parameter]",
+            "\tpublic IReadOnlyList<TItem> Items { get; set; }",
+            "}"
+        ]
+    },
+    "NavLink": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-navlink",
+        "body": [
+            "<NavLink href=\"${1}\">${3:Home}</NavLink>"
+        ]
+    },
+    "NavLink with Match attribute": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-navlink-match",
+        "body": [
+            "<NavLink href=\"${1}\" Match=\"${2|NavLinkMatch.All,NavLinkMatch.Prefix|}\">${3:Home}</NavLink>"
+        ]
+    },
+    "Blazor CascadingValue Component": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-cascadingValue",
+        "body": [
+            "<CascadingValue Value=\"@${1:Value}\">",
+            "    <${2:ChildComponent} $3/>",
+            "</CascadingValue>"
+        ]
+    },
+    "Form with validation (EditForm)": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-form",
+        "body": [
+            "<EditForm Model=\"@${1:model}\" OnValidSubmit=\"@${2:HandleValidSubmit}\">",
+            "    <DataAnnotationsValidator />",
+            "    <ValidationSummary />",
+            "    $0",
+            "    <button type=\"submit\">${3:Submit}</button>",
+            "</EditForm>"
+        ]
+    },
+    "ValidationMessage Component": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-validationMessage",
+        "body": [
+            "<ValidationMessage For=\"@(() => ${1:model.Name})\" />"
+        ]
+    },
+    "Form Group (Bootstrap classes)": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-form-group-bootstrap",
+        "body": [
+            "<div class=\"form-group\">",
+            "\t<label for=\"@nameof(${1:model.Name})\">${2:@nameof(${1})}</label>",
+            "\t<${3:InputText} id=\"@nameof(${1})\" @bind-Value=\"${1}\" class=\"form-control\" />",
+            "\t<ValidationMessage For=\"@(() => ${1})\" />",
+            "</div>"
+        ]
+    },
+    "AuthorizeView Component": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-authorizeView",
+        "body": [
+            "<AuthorizeView>",
+            "\t${1:<p>Hello, @context.User.Identity.Name</p>}$0",
+            "</AuthorizeView>"
+        ]
+    },
+    "AuthorizeView Component using Roles": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-authorizeView-roles",
+        "body": [
+            "<AuthorizeView Roles=\"${1:admin, superuser}\">",
+            "\t${2:<p>You can only see this if you're an admin or superuser.</p>}$0",
+            "</AuthorizeView>"
+        ]
+    },
+    "AuthorizeView Component with NotAuthorized section": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-authorizeView-not",
+        "body": [
+            "<AuthorizeView>",
+            "\t<Authorized>",
+            "\t\t${1:<p>Hello, @context.User.Identity.Name</p>}$0",
+            "\t</Authorized>",
+            "\t<NotAuthorized>",
+            "\t\t<p>You're not signed in.</p>",
+            "\t</NotAuthorized>",
+            "</AuthorizeView>"
+        ]
+    },
+
+    // ==========================================
+    // 4. Blazor Input 表單基礎組件 (來自 components.json)
+    // ==========================================
+    "Blazor Input Text": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-input-text",
+        "body": [
+            "<InputText id=\"${1:firstName}\" @bind-Value=\"${2:model.FirstName}\" />"
+        ]
+    },
+    "Blazor Input Text Area": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-input-textarea",
+        "body": [
+            "<InputTextArea id=\"${1:comments}\" @bind-Value=\"${2:model.Comments}\" />"
+        ]
+    },
+    "Blazor Input Number": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-input-number",
+        "body": [
+            "<InputNumber id=\"${1:count}\" @bind-Value=\"${2:model.Count}\" />"
+        ]
+    },
+    "Blazor Input Checkbox": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-input-checkbox",
+        "body": [
+            "<InputCheckbox id=\"${1:isAllowed}\" @bind-Value=\"${2:model.IsAllowed}\" />"
+        ]
+    },
+    "Blazor Input Date": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-input-date",
+        "body": [
+            "<InputDate id=\"${1:birthDate}\" @bind-Value=\"${2:model.BirthDate}\" />"
+        ]
+    },
+    "Blazor Input Select": {
+        "scope": "aspnetcorerazor,html",
+        "prefix": "bl-input-select",
+        "body": [
+            "<InputSelect id=\"${1:options}\" @bind-Value=\"${2:model.SelectedOption}\">",
+            "    ${3:<option value=\"\" disabled>Select...</option>}",
+            "    ${4:<option value=\"Option1\">Option 1</option>}",
+            "</InputSelect>"
+        ]
+    },
+
+    // ==========================================
+    // 5. C# / 生命週期與後端屬性 (以第一組為主，整合 events.json)
+    // ==========================================
+    "C# Property": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-prop",
+        "body": [
+            "${1:public} ${2:string} ${3:Name} { get; set; }"
+        ]
+    },
+    "Parameter": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-param",
+        "body": [
+            "[Parameter]",
+            "public ${1:string} ${2:MyParameter} { get; set; }"
+        ]
+    },
+    "Parameter Capturing Unmatched Values": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-param-unmatched",
+        "body": [
+            "[Parameter(CaptureUnmatchedValues = true)]",
+            "public Dictionary<string, object> ${1:Attributes} { get; set; }"
+        ]
+    },
+    "Cascading Parameter": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-param-cascading",
+        "body": [
+            "[CascadingParameter]",
+            "${1:private} ${2:string} ${3:MyCascadingParameter} { get; set; }"
+        ]
+    },
+    "AuthenticationStateTask Parameter": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-authStateTask",
+        "body": [
+            "[CascadingParameter]",
+            "${1:private} Task<AuthenticationState> ${2:AuthenticationStateTask} { get; set; }"
+        ]
+    },
+    "Component Code Behind": {
+        "scope": "csharp",
+        "prefix": "bl-code-behind",
+        "body": [
+            "using System;",
+            "using System.Collections.Generic;",
+            "using System.Linq;",
+            "using System.Threading.Tasks;",
+            "",
+            "namespace ${1:Namespace}",
+            "{",
+            "\tpublic partial class ${TM_FILENAME_BASE/(.*)\\..+$/$1/}",
+            "\t{",
+            "\t\t$0",
+            "\t}",
+            "}"
+        ]
+    },
+    "OnInitialized": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-onInitialized",
+        "body": [
+            "protected override void OnInitialized()",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "OnInitializedAsync": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-onInitialized-async",
+        "body": [
+            "protected override async Task OnInitializedAsync()",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "OnParametersSet": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-onParametersSet",
+        "body": [
+            "protected override void OnParametersSet()",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "OnParametersSetAsync": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-onParametersSet-async",
+        "body": [
+            "protected override async Task OnParametersSetAsync()",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "OnAfterRender": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-onAfterRender",
+        "body": [
+            "protected override void OnAfterRender(bool firstRender)",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "OnAfterRenderAsync": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-onAfterRender-async",
+        "body": [
+            "protected override async Task OnAfterRenderAsync(bool firstRender)",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "ShouldRender": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-shouldRender",
+        "body": [
+            "protected override bool ShouldRender()",
+            "{",
+            "\t$0",
+            "\treturn true;",
+            "}"
+        ]
+    },
+    "Event Handler": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-eventHandler",
+        "body": [
+            "${1:private} void ${2:Handle}(${3:MouseEventArgs} ${4:e})",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "Async Event Handler": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-eventHandler-async",
+        "body": [
+            "${1:private} async Task ${2:HandleAsync}(${3:MouseEventArgs} ${4:e})",
+            "{",
+            "\t$0",
+            "}"
+        ]
+    },
+    "OnChange Event": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-onChange",
+        "body": [
+            "${1:public} void ${2:OnChange}(UIChangeEventArgs event)",
+            "{",
+            "    $3",
+            "}"
+        ]
+    },
+    "OnChange Async Event": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-onChange-async",
+        "body": [
+            "${1:public} async Task ${2:OnChangeAsync}(UIChangeEventArgs event)",
+            "{",
+            "    $3",
+            "}"
+        ]
+    },
+    "Event Callback": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-eventCallback",
+        "body": [
+            "[Parameter]",
+            "public EventCallback<${1:MouseEventArgs}> ${2:OnClick} { get; set; }"
+        ]
+    },
+    "Event Callback On Parameter Changed": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-eventCallback-changed",
+        "body": [
+            "[Parameter]",
+            "public ${1:string} ${2:MyParameter} { get; set; }",
+            "",
+            "[Parameter]",
+            "public EventCallback<$1> $2Changed { get; set; }"
+        ]
+    },
+    "GetFromJsonAsync Call": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-get-json",
+        "body": [
+            "await ${1:Http}.GetFromJsonAsync<${2:string}>(\"${3:api/}\");"
+        ]
+    },
+    "Invoke JavaScript Function": {
+        "scope": "csharp,aspnetcorerazor",
+        "prefix": "bl-js-invoke",
+        "body": [
+            "await ${1:JSRuntime}.InvokeAsync<${2:object}>(${3:\"identifier\"}, ${4:args});"
+        ]
+    },
+    "Notifier Service": {
+        "scope": "csharp",
+        "prefix": "bl-notifier-service",
+        "body": [
+            "public class ${1:${TM_FILENAME_BASE}}",
+            "{",
+            "\tpublic async Task ${2:Update}(${3:string key, int value})",
+            "\t{",
+            "\t\tif ($4 != null)",
+            "\t\t{",
+            "\t\t\tawait $4.Invoke(${5:key, value});",
+            "\t\t}",
+            "\t}",
+            "",
+            "\tpublic event Func<${6:string, int}, Task> ${4:Notify};",
+            "}"
+        ]
+    },
+
+    // ==========================================
+    // 6. .csproj 專案設定片段 (對應 xml 語言模式)
+    // ==========================================
+    "Disable LinkOnBuild": {
+        "scope": "xml",
+        "prefix": "bl-disable-link",
+        "body": [
+            "<PropertyGroup>",
+            "\t<BlazorLinkOnBuild Condition=\"'$(Configuration)'!='Release'\">false</BlazorLinkOnBuild>",
+            "</PropertyGroup>"
+        ]
+    },
+
+    // ==========================================
+    // 7. HTML 部署與 GitHub Pages 片段
+    // ==========================================
+    "Base Path": {
+        "scope": "html",
+        "prefix": "github-pages-base",
+        "body": [
+            "<base href=\"/${1:Repository}/\">"
+        ],
+        "description": "See: https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/blazor/client-side?view=aspnetcore-3.0#github-pages"
+    },
+    "Index Script - Single Page Apps for GitHub Pages": {
+        "scope": "html",
+        "prefix": "github-pages-spa-index",
+        "body": [
+            "",
+            "<script type=\"text/javascript\">",
+            "\t(function (l) {",
+            "\t\tif (l.search) {",
+            "\t\t\tvar q = {};",
+            "\t\t\tl.search.slice(1).split('&').forEach(function (v) {",
+            "\t\t\t\tvar a = v.split('=');",
+            "\t\t\t\tq[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');",
+            "\t\t\t});",
+            "\t\t\tif (q.p !== undefined) {",
+            "\t\t\t\twindow.history.replaceState(null, null,",
+            "\t\t\t\t\tl.pathname.slice(0, -1) + (q.p || '') +",
+            "\t\t\t\t\t(q.q ? ('?' + q.q) : '') +",
+            "\t\t\t\t\tl.hash",
+            "\t\t\t\t);",
+            "\t\t\t}",
+            "\t\t}",
+            "\t}(window.location))",
+            "</script>",
+            ""
+        ]
+    },
+    "404 - Single Page Apps for GitHub Pages": {
+        "scope": "html",
+        "prefix": "github-pages-spa-404",
+        "body": [
+            "<!DOCTYPE html>",
+            "<html>",
+            "<head>",
+            "\t<meta charset=\"utf-8\">",
+            "\t<title>Single Page Apps for GitHub Pages</title>",
+            "\t<script type=\"text/javascript\">",
+            "\t\tvar segmentCount = ${1:0};",
+            "\t\tvar l = window.location;",
+            "\t\tl.replace(",
+            "\t\t\tl.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +",
+            "\t\t\tl.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?p=/' +",
+            "\t\t\tl.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +",
+            "\t\t\t(l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +",
+            "\t\t\tl.hash",
+            "\t\t);",
+            "\t</script>",
+            "</head>",
+            "<body></body>",
+            "</html>"
+        ]
+    }
+}
